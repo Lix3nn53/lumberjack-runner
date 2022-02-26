@@ -19,7 +19,6 @@ namespace Lix.LumberjackRunner
   {
     [SerializeField] private GameObject graphicsContainer;
     [SerializeField] private GameObject stackContainer;
-    [SerializeField] private GameObject playerGraphics;
     [SerializeField] private float heightPerStack = 0.5f;
     [SerializeField] private float offsetYOnCollect = 0.1f;
 
@@ -40,10 +39,6 @@ namespace Lix.LumberjackRunner
       stack.transform.SetParent(this.stackContainer.gameObject.transform);
       float localY = stackContainer.transform.GetChild(stackCount - 1).transform.localPosition.y + this.heightPerStack + this.offsetYOnCollect;
       stack.transform.localPosition = new Vector3(0, localY, 0);
-
-      // Player player = go.GetComponent<Player>();
-
-      // player.SetSelectedInterractable(this);
 
       // AudioManager.Instance.Play("interractEnter");
     }
@@ -88,6 +83,25 @@ namespace Lix.LumberjackRunner
         cubeToRemove.transform.SetParent(trackManager.GetCurrentSegment().DroppedCubeThrash.transform); // Add dropped cube to thrash of current segment
         cubeToRemove.transform.localPosition = new Vector3((int)(cubeToRemove.transform.localPosition.x), cubeToRemove.transform.localPosition.y, cubeToRemove.transform.localPosition.z);
       }
+    }
+
+    public void OnObstacle()
+    {
+      int toRemove = 1;
+
+      // Check for gameover
+      int count = this.stackContainer.transform.childCount;
+      if (count < toRemove)
+      { // Gameover if player is below required height or if player loses all cubes 
+        playerMovement.StopRunning();
+        Debug.Log("GAME OVER");
+        return;
+      }
+
+      int lastIndex = count - 1;
+      GameObject cubeToRemove = this.stackContainer.transform.GetChild(lastIndex).gameObject;
+      // cubeToRemove.transform.SetParent(null); // Add dropped cube to thrash of current segment
+      Destroy(cubeToRemove);
     }
   }
 }

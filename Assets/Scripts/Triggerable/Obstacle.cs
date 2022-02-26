@@ -1,32 +1,30 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Lix.Core;
 
 namespace Lix.LumberjackRunner
 {
-  public class Log : Triggerable
+  public class Obstacle : Triggerable
   {
+    // Dependencies
     private PlayerCollider playerCollider;
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
       playerCollider = DIContainer.GetService<PlayerCollider>();
+      playerMovement = DIContainer.GetService<PlayerMovement>();
     }
 
     public override void OnTrigger(Collider other)
     {
+      Debug.Log(other.gameObject.name);
       var go = other.gameObject;
       if (go == null || !other.gameObject.CompareTag("Player"))
         return;
 
-      playerCollider.OnStack(this.gameObject);
-
-      // The logs player is carrying affacted by gravity
-      this.gameObject.GetComponent<BoxCollider>().isTrigger = false;
-      this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-
-      Destroy(this); // Removes this script instance from the game object
+      playerCollider.OnObstacle();
     }
   }
 }
