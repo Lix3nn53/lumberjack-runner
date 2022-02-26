@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Lix.Core;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
   /// <summary>
   /// The PlayerCollider handles what happens when the player collides with something.
@@ -18,10 +18,10 @@ namespace Lix.CubeRunner
   public class PlayerCollider : MonoBehaviour
   {
     [SerializeField] private GameObject graphicsContainer;
-    [SerializeField] private GameObject cubeContainer;
+    [SerializeField] private GameObject stackContainer;
     [SerializeField] private GameObject playerGraphics;
-    [SerializeField] private float heightPerCube = 1.0f;
-    [SerializeField] private float jumpOnCollect = 0.2f;
+    [SerializeField] private float heightPerStack = 0.5f;
+    [SerializeField] private float offsetYOnCollect = 0.1f;
 
     private PlayerMovement playerMovement;
     private TrackManager trackManager;
@@ -32,22 +32,14 @@ namespace Lix.CubeRunner
       // trackManager = DIContainer.GetService<TrackManager>();
     }
 
-    public void OnCube(GameObject cube)
+    public void OnStack(GameObject stack)
     {
-      int cubeCount = this.cubeContainer.transform.childCount;
+      int stackCount = this.stackContainer.transform.childCount;
 
-      // Container Height
-      float containerY = this.graphicsContainer.transform.position.y + this.heightPerCube + 0.2f;
-      this.graphicsContainer.transform.position = new Vector3(this.graphicsContainer.transform.position.x, containerY, this.graphicsContainer.transform.position.z);
-
-      // Add New Cube To Container
-      cube.transform.SetParent(this.cubeContainer.gameObject.transform);
-      float localY = cubeContainer.transform.GetChild(cubeCount - 1).transform.localPosition.y - this.heightPerCube;
-      cube.transform.localPosition = new Vector3(0, localY, 0);
-
-      // PlayerGraphics Height
-      float playerGraphicsY = this.playerGraphics.transform.localPosition.y + this.jumpOnCollect;
-      this.playerGraphics.transform.localPosition = new Vector3(this.playerGraphics.transform.localPosition.x, playerGraphicsY, this.playerGraphics.transform.localPosition.z);
+      // Add New Stack To Container
+      stack.transform.SetParent(this.stackContainer.gameObject.transform);
+      float localY = stackContainer.transform.GetChild(stackCount - 1).transform.localPosition.y + this.heightPerStack + this.offsetYOnCollect;
+      stack.transform.localPosition = new Vector3(0, localY, 0);
 
       // Player player = go.GetComponent<Player>();
 
@@ -81,7 +73,7 @@ namespace Lix.CubeRunner
       }
 
       // Check for gameover
-      int count = this.cubeContainer.transform.childCount;
+      int count = this.stackContainer.transform.childCount;
       if (count < requiredHeight || count <= toRemove.Count)
       { // Gameover if player is below required height or if player loses all cubes 
         playerMovement.StopRunning();
@@ -92,7 +84,7 @@ namespace Lix.CubeRunner
       int lastIndex = count - 1;
       foreach (int i in toRemove)
       {
-        GameObject cubeToRemove = this.cubeContainer.transform.GetChild(lastIndex - i).gameObject;
+        GameObject cubeToRemove = this.stackContainer.transform.GetChild(lastIndex - i).gameObject;
         cubeToRemove.transform.SetParent(trackManager.GetCurrentSegment().DroppedCubeThrash.transform); // Add dropped cube to thrash of current segment
         cubeToRemove.transform.localPosition = new Vector3((int)(cubeToRemove.transform.localPosition.x), cubeToRemove.transform.localPosition.y, cubeToRemove.transform.localPosition.z);
       }

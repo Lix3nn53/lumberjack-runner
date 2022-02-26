@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 using Lix.Core;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
   public class SceneLoader : MonoBehaviour
   {

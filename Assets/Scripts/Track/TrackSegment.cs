@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Lix.Core;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
   public class TrackSegment : MonoBehaviour
   {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Lix.Core;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
-  public class Cube : Triggerable
+  public class Log : Triggerable
   {
     private PlayerCollider playerCollider;
 
@@ -20,7 +20,7 @@ namespace Lix.CubeRunner
       if (go == null || !other.gameObject.CompareTag("Player"))
         return;
 
-      playerCollider.OnCube(this.gameObject);
+      playerCollider.OnStack(this.gameObject);
       Destroy(this); // Removes this script instance from the game object
     }
   }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Lix.Core;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
   [RequireComponent(typeof(PlayerInput))]
   public class InputListener : DontDestroy, IInputListener

@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Pool;
 using Lix.Core;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
-  public class CubePool : GameObjectPool
+  public class LogPool : GameObjectPool
   {
     protected override void Awake()
     {
@@ -17,7 +17,7 @@ namespace Lix.CubeRunner
     {
       base.OnTakeFromPool(go);
 
-      go.AddComponent<Cube>();
+      go.AddComponent<Log>();
     }
   }
 }

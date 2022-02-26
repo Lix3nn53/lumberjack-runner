@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
   public class Triggerable : MonoBehaviour
   {

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Lix.Core;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
   public class ObstacleGroup : Triggerable
   {

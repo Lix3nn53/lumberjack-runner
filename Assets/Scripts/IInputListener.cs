@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
   public enum InputActionType { Move, Pause }
   public interface IInputListener

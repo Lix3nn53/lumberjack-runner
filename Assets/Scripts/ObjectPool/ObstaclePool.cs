@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using Lix.Core;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
   public class ObstaclePool : GameObjectPool
   {

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using Lix.Core;
 using TMPro;
 
-namespace Lix.CubeRunner
+namespace Lix.LumberjackRunner
 {
   public class PlayerMovement : MonoBehaviour
   {
