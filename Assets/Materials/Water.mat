@@ -83,6 +83,9 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
+    - _CurveAmount: 100
+    - _Curve_X: 0.05
+    - _Curve_Y: -0.15
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -91,19 +94,22 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Height: -0.15
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Range: 0.8
     - _ReceiveShadows: 1
-    - _RippleDensity: 12
+    - _RippleDensity: 16
     - _RippleSlimness: 3
     - _RippleSpeed: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StartsAt: -9
     - _Surface: 0
     - _WaveScale: 0.5
     - _WaveSpeed: 0.05
