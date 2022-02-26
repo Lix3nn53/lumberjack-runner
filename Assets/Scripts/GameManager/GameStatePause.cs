@@ -29,13 +29,13 @@ namespace Lix.LumberjackRunner
       Resume();
     }
 
-    public void Pause()
+    private void Pause()
     {
       Time.timeScale = 0f;
       pauseMenu.PauseMenuPanel.SetActive(true);
     }
 
-    public void Resume()
+    private void Resume()
     {
       Time.timeScale = 1f;
       pauseMenu.PauseMenuPanel.SetActive(false);
