@@ -19,7 +19,6 @@ namespace Lix.LumberjackRunner
 
     public override void OnTrigger(Collider other)
     {
-      Debug.Log(other.gameObject.name);
       var go = other.gameObject;
       if (go == null || !other.gameObject.CompareTag("Player"))
         return;
