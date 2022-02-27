@@ -109,7 +109,7 @@ namespace Lix.LumberjackRunner
 
     public void OnWaterObstacle(WaterObstacle waterObstacle)
     {
-      waterObstacle.FormLane(this.stackContainer, this.transform.position.z);
+      waterObstacle.FormLane(this.stackContainer, this.transform.position.x);
     }
   }
 }

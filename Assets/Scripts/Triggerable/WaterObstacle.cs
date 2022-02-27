@@ -15,9 +15,11 @@ namespace Lix.LumberjackRunner
 
     [SerializeField] private float logStartLength = 3f;
 
-    [SerializeField] private float logLengthPerLog = 1f;
+    [SerializeField] private float logLengthPerLog = 2f;
 
-    [SerializeField] private float colliderLengthPerLog = 1f;
+    [SerializeField] private float colliderStartLength = -1f;
+
+    [SerializeField] private float colliderLengthPerLog = 2f;
 
     [SerializeField] private int requiredLogAmount = 5;
 
@@ -44,15 +46,15 @@ namespace Lix.LumberjackRunner
 
     [SerializeField] private GameObject[] laneColliders;
 
-    public static int GetLane(float positionZ)
+    public static int GetLane(float playerX)
     {
-      if (positionZ < -0.4)
-      {
-        return 2;
-      }
-      else if (positionZ > 0.4)
+      if (playerX < -0.4)
       {
         return 0;
+      }
+      else if (playerX > 0.4)
+      {
+        return 2;
       }
       else
       {
@@ -60,9 +62,9 @@ namespace Lix.LumberjackRunner
       }
     }
 
-    public void FormLane(GameObject stackContainer, float playerZ)
+    public void FormLane(GameObject stackContainer, float playerX)
     {
-      int laneIndex = WaterObstacle.GetLane(this.transform.position.z);
+      int laneIndex = GetLane(playerX);
 
       int stopIndex = stackContainer.transform.childCount;
       if (stackContainer.transform.childCount > requiredLogAmount)
@@ -92,7 +94,7 @@ namespace Lix.LumberjackRunner
 
     private void FormColliderLength(int lane)
     {
-      laneColliders[lane].transform.localScale = new Vector3(laneColliders[lane].transform.localScale.x, laneColliders[lane].transform.localScale.y, (logsAdded * colliderLengthPerLog));
+      laneColliders[lane].transform.localScale = new Vector3(laneColliders[lane].transform.localScale.x, laneColliders[lane].transform.localScale.y, colliderStartLength + (logsAdded * colliderLengthPerLog));
     }
   }
 }
