@@ -22,6 +22,8 @@ namespace Lix.LumberjackRunner
       if (go == null || !other.gameObject.CompareTag("Player"))
         return;
 
+      Debug.Log("Drown");
+
       playerMovement.StopRunning();
       gameManager.OnGameOver(false);
     }

@@ -59,7 +59,7 @@ namespace Lix.LumberjackRunner
         }
       }
 
-      rigidbody.velocity = new Vector3(sidewaysVelocity, 0, forwardVelocity);
+      rigidbody.velocity = new Vector3(sidewaysVelocity, rigidbody.velocity.y, forwardVelocity);
     }
 
     public void OnMovement(float movement)
