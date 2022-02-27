@@ -106,5 +106,10 @@ namespace Lix.LumberjackRunner
       // cubeToRemove.transform.SetParent(null); // Add dropped cube to thrash of current segment
       Destroy(cubeToRemove);
     }
+
+    public void OnWaterObstacle(WaterObstacle waterObstacle)
+    {
+      waterObstacle.FormLane(this.stackContainer, this.transform.position.z);
+    }
   }
 }
