@@ -94,10 +94,11 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Height: -0.15
+    - _Height: -0.05
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _Power: 1.25
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Range: 0.8
@@ -109,7 +110,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StartsAt: -9
+    - _StartsAt: -1
     - _Surface: 0
     - _WaveScale: 0.5
     - _WaveSpeed: 0.05
