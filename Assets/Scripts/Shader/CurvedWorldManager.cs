@@ -11,14 +11,7 @@ public class CurvedWorldManager : MonoBehaviour
   private void Update()
   {
 
-    if (Application.isPlaying)
-    {
-      if (!Shader.IsKeywordEnabled(ENABLED))
-      {
-        Shader.EnableKeyword(ENABLED);
-      }
-    }
-    else if (alwaysEnable)
+    if (alwaysEnable)
     {
       if (!Shader.IsKeywordEnabled(ENABLED))
       {

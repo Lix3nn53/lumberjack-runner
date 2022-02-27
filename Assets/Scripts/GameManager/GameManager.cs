@@ -30,5 +30,10 @@ namespace Lix.LumberjackRunner
       }
     }
 
+
+    public void OnGameOver(bool isWin)
+    {
+      ChangeState(new GameStateEnd(isWin));
+    }
   }
 }

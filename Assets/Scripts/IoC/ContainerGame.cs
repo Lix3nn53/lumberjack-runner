@@ -8,13 +8,18 @@ public class ContainerGame : DIContainerRegisterMono
 {
   [SerializeField] private PlayerCollider playerCollider;
   [SerializeField] private PlayerMovement playerMovement;
-  [SerializeField] private TrackManager trackManager;
+  [SerializeField] private GameManager gameManager;
+  [SerializeField] private PlayerAnimationController playerAnimationController;
 
   public override void RegisterDependencies()
   {
     DIContainer.Register(new ServiceDescriptor(playerCollider, ServiceLifetime.Singleton));
 
     DIContainer.Register(new ServiceDescriptor(playerMovement, ServiceLifetime.Singleton));
+
+    DIContainer.Register(new ServiceDescriptor(gameManager, ServiceLifetime.Singleton));
+
+    DIContainer.Register(new ServiceDescriptor(playerAnimationController, ServiceLifetime.Singleton));
 
     // DIContainer.Register(new ServiceDescriptor(trackManager, ServiceLifetime.Singleton));
   }

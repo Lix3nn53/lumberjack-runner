@@ -16,7 +16,19 @@ namespace Lix.LumberjackRunner
 
     void Update()
     {
-      animator.SetFloat("SpeedY", Mathf.Abs(playerRb.velocity.y));
+      animator.SetFloat("SpeedForward", Mathf.Abs(playerRb.velocity.z));
+    }
+
+    public void OnGameOver(bool isWin)
+    {
+      if (isWin)
+      {
+        animator.SetTrigger("Win");
+      }
+      else
+      {
+        animator.SetTrigger("Lose");
+      }
     }
   }
 }

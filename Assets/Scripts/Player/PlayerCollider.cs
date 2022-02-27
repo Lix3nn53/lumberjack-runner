@@ -23,11 +23,13 @@ namespace Lix.LumberjackRunner
     [SerializeField] private float offsetYOnCollect = 0.1f;
 
     private PlayerMovement playerMovement;
+    private GameManager gameManager;
     private TrackManager trackManager;
 
     private void Start()
     {
       playerMovement = DIContainer.GetService<PlayerMovement>();
+      gameManager = DIContainer.GetService<GameManager>();
       // trackManager = DIContainer.GetService<TrackManager>();
     }
 
@@ -73,6 +75,7 @@ namespace Lix.LumberjackRunner
       { // Gameover if player is below required height or if player loses all cubes 
         playerMovement.StopRunning();
         Debug.Log("GAME OVER");
+
         return;
       }
 
@@ -94,7 +97,7 @@ namespace Lix.LumberjackRunner
       if (count < toRemove)
       { // Gameover if player is below required height or if player loses all cubes 
         playerMovement.StopRunning();
-        Debug.Log("GAME OVER");
+        gameManager.OnGameOver(false);
         return;
       }
 
