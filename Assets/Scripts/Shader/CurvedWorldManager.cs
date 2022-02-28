@@ -6,12 +6,12 @@ using UnityEngine;
 public class CurvedWorldManager : MonoBehaviour
 {
   private const string ENABLED = "_ENABLE";
-  [SerializeField] private bool alwaysEnable = false;
+  [SerializeField] private bool enable = false;
 
   private void Update()
   {
 
-    if (alwaysEnable)
+    if (enable)
     {
       if (!Shader.IsKeywordEnabled(ENABLED))
       {

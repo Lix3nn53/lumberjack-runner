@@ -6,22 +6,13 @@ using UnityEngine.InputSystem;
 using TMPro;
 using Lix.Core;
 
-namespace Lix.LumberjackRunner
+namespace Lix.Core
 {
   public class SceneLoader : MonoBehaviour
   {
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider slider;
     [SerializeField] private TMP_Text percentText;
-
-    private bool buttonPressed = false;
-
-    private void Start()
-    {
-      IInputListener inputListener = DIContainer.GetService<IInputListener>();
-
-      inputListener.GetAction(InputActionType.Move).performed += OnMovementInputPerformed;
-    }
 
     public void Load(int sceneIndex)
     {
@@ -60,23 +51,16 @@ namespace Lix.LumberjackRunner
         if (operation.progress >= 0.9f)
         {
           //Change the Text to show the Scene is ready
-          percentText.text = "Press the space bar to continue";
-          //Wait to you press the space key to activate the Scene
-          if (buttonPressed)
-            //Activate the Scene
-            operation.allowSceneActivation = true; // operation is not done until this line is executed
+          // percentText.text = "Press the space bar to continue";
+          // Wait to you press the space key to activate the Scene
+          // if (buttonPressed)
+          // Activate the Scene
+          operation.allowSceneActivation = true; // operation is not done until this line is executed
         }
 
         Debug.Log(progress);
         yield return null;
       }
-    }
-
-
-
-    private void OnMovementInputPerformed(InputAction.CallbackContext context)
-    {
-      buttonPressed = true;
     }
   }
 }
