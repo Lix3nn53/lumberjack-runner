@@ -10,7 +10,7 @@ namespace Lix.LumberjackRunner
   {
     private void Start()
     {
-      ChangeState(new GameStatePlay());
+      ChangeState(new GameStateWaitingInput());
     }
 
 

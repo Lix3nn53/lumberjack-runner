@@ -1,22 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Lix.Core;
 
 namespace Lix.LumberjackRunner
 {
   public class GameStateWaitingInput : IState
   {
-    private PauseMenu pauseMenu;
-
-    public GameStateWaitingInput()
-    {
-      pauseMenu = DIContainer.GetService<PauseMenu>();
-    }
-
+    private WaitingInputMenu waitingInputMenu;
+    private GameManager gameManager;
+    private IInputListener inputListener;
+    private PlayerMovement playerMovement;
     public void Enter()
     {
+      waitingInputMenu = DIContainer.GetService<WaitingInputMenu>();
+
+      inputListener = DIContainer.GetService<IInputListener>();
+
+      inputListener.GetAction(InputActionType.Move).performed += OnMoveInputPerformed;
+
+      gameManager = DIContainer.GetService<GameManager>();
+
+      playerMovement = DIContainer.GetService<PlayerMovement>();
+
       Pause();
+    }
+
+    private void OnMoveInputPerformed(InputAction.CallbackContext context)
+    {
+      gameManager.ChangeState(new GameStatePlay());
     }
 
     public void Execute()
@@ -26,19 +39,20 @@ namespace Lix.LumberjackRunner
 
     public void Exit()
     {
+      inputListener.GetAction(InputActionType.Move).performed -= OnMoveInputPerformed;
       Resume();
     }
 
     private void Pause()
     {
-      Time.timeScale = 0f;
-      pauseMenu.PauseMenuPanel.SetActive(true);
+      playerMovement.StopRunning();
+      waitingInputMenu.Panel.SetActive(true);
     }
 
     private void Resume()
     {
-      Time.timeScale = 1f;
-      pauseMenu.PauseMenuPanel.SetActive(false);
+      playerMovement.StartRunning();
+      waitingInputMenu.Panel.SetActive(false);
     }
   }
 }

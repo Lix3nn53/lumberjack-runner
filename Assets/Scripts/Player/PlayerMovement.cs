@@ -73,6 +73,11 @@ namespace Lix.LumberjackRunner
       rigidbody.velocity = new Vector3(0, 0, 0);
     }
 
+    public void StartRunning()
+    {
+      this.isRunning = true;
+    }
+
     private void OnMovementInputPerformed(InputAction.CallbackContext context)
     {
       InputDevice device = context.control.device;

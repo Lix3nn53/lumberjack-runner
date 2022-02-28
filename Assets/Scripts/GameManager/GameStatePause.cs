@@ -44,13 +44,13 @@ namespace Lix.LumberjackRunner
     private void Pause()
     {
       Time.timeScale = 0f;
-      pauseMenu.PauseMenuPanel.SetActive(true);
+      pauseMenu.Panel.SetActive(true);
     }
 
     private void Resume()
     {
       Time.timeScale = 1f;
-      pauseMenu.PauseMenuPanel.SetActive(false);
+      pauseMenu.Panel.SetActive(false);
     }
   }
 }

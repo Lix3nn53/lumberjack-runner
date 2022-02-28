@@ -6,7 +6,7 @@ using Lix.Core;
 
 namespace Lix.LumberjackRunner
 {
-  public class PauseMenu : MonoBehaviour
+  public class WaitingInputMenu : MonoBehaviour
   {
     public GameObject Panel;
 
