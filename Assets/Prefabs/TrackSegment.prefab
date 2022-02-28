@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3744597450766755074}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TrackSegment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 275310438334002050}
   - component: {fileID: 2609534904266524488}
   - component: {fileID: 3744597450894646223}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platfrom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,5 +127,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 1, z: 10}
-  m_Center: {x: 0, y: -0.5, z: 5}
+  m_Size: {x: 5, y: 1, z: 10.5}
+  m_Center: {x: 0, y: -0.5, z: 4.75}

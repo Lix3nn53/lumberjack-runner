@@ -11,23 +11,6 @@ namespace Lix.LumberjackRunner
     private void Start()
     {
       ChangeState(new GameStatePlay());
-
-      IInputListener inputListener = DIContainer.GetService<IInputListener>();
-
-      inputListener.GetAction(InputActionType.Pause).performed += OnPauseInputPerformed;
-    }
-
-    private void OnPauseInputPerformed(InputAction.CallbackContext context)
-    {
-
-      if (CurrentState is GameStatePause)
-      {
-        ChangeState(new GameStatePlay());
-      }
-      else
-      {
-        ChangeState(new GameStatePause());
-      }
     }
 
 

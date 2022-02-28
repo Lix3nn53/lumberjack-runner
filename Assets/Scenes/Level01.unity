@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.080172546, g: 0.074823536, b: 0.23529412, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.012
+  m_FogDensity: 0.0125
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -2296,7 +2296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 913344552}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TrackManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3371,12 +3371,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733546946}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d79abc34c8e895946a4b2860964b2ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alwaysEnable: 1
+  alwaysEnable: 0
 --- !u!1 &1798818578
 GameObject:
   m_ObjectHideFlags: 0
@@ -4699,10 +4699,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 913344552}
     m_Modifications:
-    - target: {fileID: 1740253079, guid: d7a7386e2bcb6d0438b870c05d5d45ea, type: 3}
-      propertyPath: requiredLogAmount
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3917279499085120838, guid: d7a7386e2bcb6d0438b870c05d5d45ea, type: 3}
       propertyPath: m_Name
       value: TrackWaterObstacle
