@@ -6,7 +6,7 @@ using Lix.Core;
 
 namespace Lix.LumberjackRunner
 {
-  public class GameManager : StateMachine
+  public class GameManager : StateMachineDontDestroy
   {
     [SerializeField] private int coins;
     public int Coins
