@@ -16,6 +16,8 @@ namespace Lix.Core
 
     public void Load(int sceneIndex)
     {
+      slider.enabled = true;
+
       StartCoroutine(LoadAsynchronously(sceneIndex));
     }
 
