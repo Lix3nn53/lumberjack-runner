@@ -19,9 +19,13 @@ namespace Lix.LumberjackRunner
 
     public event OnCoinValueChange OnCoinValueChangeEvent;
 
+    private AudioManager audioManager;
+
     private void Start()
     {
       ChangeState(new GameStateWaitingInput());
+
+      audioManager = DIContainer.GetService<AudioManager>();
     }
 
 
@@ -32,6 +36,11 @@ namespace Lix.LumberjackRunner
 
     public void AddCoins(int amount)
     {
+      if (amount > 0)
+      {
+        audioManager.Play("OnCoin");
+      }
+
       Coins += amount;
       OnCoinValueChangeEvent?.Invoke(Coins);
     }

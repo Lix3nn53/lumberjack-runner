@@ -24,13 +24,13 @@ namespace Lix.LumberjackRunner
 
     private PlayerMovement playerMovement;
     private GameManager gameManager;
-    private TrackManager trackManager;
+    private AudioManager audioManager;
 
     private void Start()
     {
       playerMovement = DIContainer.GetService<PlayerMovement>();
       gameManager = DIContainer.GetService<GameManager>();
-      // trackManager = DIContainer.GetService<TrackManager>();
+      audioManager = DIContainer.GetService<AudioManager>();
     }
 
     public int GetStackCount()
@@ -51,7 +51,8 @@ namespace Lix.LumberjackRunner
       float localY = stackContainer.transform.GetChild(stackCount - 1).transform.localPosition.y + this.heightPerStack + this.offsetYOnCollect;
       stack.transform.localPosition = new Vector3(0, localY, 0);
 
-      // AudioManager.Instance.Play("interractEnter");
+      // Play Sound
+      audioManager.Play("OnStack");
     }
 
     public void OnObstacle()
