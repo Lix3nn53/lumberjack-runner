@@ -12,10 +12,10 @@ public class ContainerUI : DIContainerRegisterMono
 
   public override void RegisterDependencies()
   {
-    DIContainer.Register(new ServiceDescriptor(waitingInputMenu, ServiceLifetime.Singleton));
+    DIContainer.Register(new ServiceDescriptor(waitingInputMenu, ServiceLifetime.Transient));
 
-    DIContainer.Register(new ServiceDescriptor(pauseMenu, ServiceLifetime.Singleton));
+    DIContainer.Register(new ServiceDescriptor(pauseMenu, ServiceLifetime.Transient));
 
-    DIContainer.Register(new ServiceDescriptor(coinMenu, ServiceLifetime.Singleton));
+    DIContainer.Register(new ServiceDescriptor(coinMenu, ServiceLifetime.Transient));
   }
 }

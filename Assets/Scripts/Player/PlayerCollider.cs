@@ -64,7 +64,7 @@ namespace Lix.LumberjackRunner
       if (count < toRemove)
       { // Gameover if player is below required height or if player loses all cubes 
         playerMovement.StopRunning();
-        gameManager.OnGameOver(false);
+        gameManager.GameOver(false);
         return;
       }
 

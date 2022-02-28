@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Lix.Core;
 
 namespace Lix.LumberjackRunner
 {
-  public class GameManager : StateMachineDontDestroy
+  public class GameManager : StateMachine
   {
     [SerializeField] private int coins;
     public int Coins
@@ -19,19 +19,36 @@ namespace Lix.LumberjackRunner
 
     public event OnCoinValueChange OnCoinValueChangeEvent;
 
+    public delegate void OnGameOver();
+
+    public event OnGameOver OnGameOverEvent;
+
     private AudioManager audioManager;
+
+    private void Awake()
+    {
+      SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
     private void Start()
     {
-      ChangeState(new GameStateWaitingInput());
-
       audioManager = DIContainer.GetService<AudioManager>();
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+      ChangeState(new GameStateWaitingInput());
+    }
 
-    public void OnGameOver(bool isWin)
+    private void OnDestroy()
+    {
+      SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void GameOver(bool isWin)
     {
       ChangeState(new GameStateEnd(isWin));
+      OnGameOverEvent?.Invoke();
     }
 
     public void AddCoins(int amount)
@@ -44,5 +61,6 @@ namespace Lix.LumberjackRunner
       Coins += amount;
       OnCoinValueChangeEvent?.Invoke(Coins);
     }
+
   }
 }

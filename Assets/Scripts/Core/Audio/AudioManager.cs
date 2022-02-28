@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Lix.Core
 {
-  public class AudioManager : DontDestroy
+  public class AudioManager : MonoBehaviour
   {
     public static AudioManager Instance;
 
@@ -12,9 +12,8 @@ namespace Lix.Core
     private static Dictionary<string, AudioSource> sources = new Dictionary<string, AudioSource>();
 
     // Start is called before the first frame update
-    protected override void Awake()
+    protected void Awake()
     {
-      base.Awake();
       foreach (Sound s in soundList)
       {
         if (sources.ContainsKey(s.soundName)) continue;

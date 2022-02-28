@@ -14,15 +14,15 @@ public class ContainerGame : DIContainerRegisterMono
 
   public override void RegisterDependencies()
   {
-    DIContainer.Register(new ServiceDescriptor(playerCollider, ServiceLifetime.Singleton));
+    DIContainer.Register(new ServiceDescriptor(playerCollider, ServiceLifetime.Transient));
 
-    DIContainer.Register(new ServiceDescriptor(playerMovement, ServiceLifetime.Singleton));
+    DIContainer.Register(new ServiceDescriptor(playerMovement, ServiceLifetime.Transient));
 
     DIContainer.Register(new ServiceDescriptor(gameManager, ServiceLifetime.Singleton));
 
     DIContainer.Register(new ServiceDescriptor(audioManager, ServiceLifetime.Singleton));
 
-    DIContainer.Register(new ServiceDescriptor(playerAnimationController, ServiceLifetime.Singleton));
+    DIContainer.Register(new ServiceDescriptor(playerAnimationController, ServiceLifetime.Transient));
 
     // DIContainer.Register(new ServiceDescriptor(trackManager, ServiceLifetime.Singleton));
   }

@@ -5,9 +5,8 @@ using UnityEngine;
 
 namespace Lix.Core
 {
-  public static class DIContainer
+  public class DIContainer : MonoBehaviour
   {
-
     private static IDictionary<Type, ServiceDescriptor> serviceDescriptors = new Dictionary<Type, ServiceDescriptor>();
 
     private static IDictionary<Type, ServiceDescriptor> GetServiceDescriptors()
@@ -19,14 +18,22 @@ namespace Lix.Core
     {
       IDictionary<Type, ServiceDescriptor> serviceDescriptors = GetServiceDescriptors();
 
-      if (serviceDescriptors.ContainsKey(serviceDescriptor.ServiceType))
+      if (serviceDescriptor.ServiceLifetime == ServiceLifetime.Singleton) // Dont register singleton if already registered
       {
-        // throw new Exception(string.Format("Service {0} is already registered", serviceDescriptor.ServiceType));
-        Debug.LogWarning(string.Format("Service {0} is already registered", serviceDescriptor.ServiceType));
-        return;
+        if (serviceDescriptors.ContainsKey(serviceDescriptor.ServiceType))
+        {
+          // throw new Exception(string.Format("Service {0} is already registered", serviceDescriptor.ServiceType));
+          Debug.LogWarning(string.Format("Service {0} is already registered", serviceDescriptor.ServiceType));
+          Destroy(((MonoBehaviour)serviceDescriptor.Implementation).gameObject);
+          return;
+        }
       }
 
       serviceDescriptors[serviceDescriptor.ServiceType] = serviceDescriptor;
+      if (serviceDescriptor.ServiceLifetime == ServiceLifetime.Singleton)
+      {
+        DontDestroyOnLoad(((MonoBehaviour)serviceDescriptor.Implementation).gameObject);
+      }
     }
 
     private static object GetService(Type serviceType)
@@ -59,10 +66,8 @@ namespace Lix.Core
       var implementation = Activator.CreateInstance(actualType, parameters); // constructorInfo.Invoke(parameters); 
 
       // Save implementation if it is singleton
-      if (serviceDescriptor.ServiceLifetime == ServiceLifetime.Singleton)
-      {
-        serviceDescriptor.Implementation = implementation;
-      }
+      //if (serviceDescriptor.ServiceLifetime == ServiceLifetime.Singleton)
+      serviceDescriptor.Implementation = implementation;
 
       return implementation;
     }

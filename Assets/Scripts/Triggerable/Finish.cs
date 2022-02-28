@@ -23,7 +23,7 @@ namespace Lix.LumberjackRunner
         return;
 
       playerMovement.StopRunning();
-      gameManager.OnGameOver(true);
+      gameManager.GameOver(true);
 
       Destroy(this);
     }

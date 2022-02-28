@@ -25,5 +25,10 @@ namespace Lix.LumberjackRunner
     {
       text.text = gameManager.Coins.ToString();
     }
+
+    private void OnDisable()
+    {
+      gameManager.OnCoinValueChangeEvent -= OnCoinValueChange;
+    }
   }
 }

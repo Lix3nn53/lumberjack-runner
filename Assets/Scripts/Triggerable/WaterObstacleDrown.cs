@@ -25,7 +25,7 @@ namespace Lix.LumberjackRunner
       Debug.Log("Drown");
 
       playerMovement.StopRunning();
-      gameManager.OnGameOver(false);
+      gameManager.GameOver(false);
     }
   }
 }

@@ -7,18 +7,21 @@ using Lix.Core;
 namespace Lix.LumberjackRunner
 {
   [RequireComponent(typeof(PlayerInput))]
-  public class InputListener : DontDestroy, IInputListener
+  public class InputListener : MonoBehaviour, IInputListener
   {
 
     private PlayerInput playerInput;
     private InputAction ActionMove;
     private InputAction ActionPause;
 
-    protected override void Awake()
+    protected void Awake()
     {
-      base.Awake();
+      if (playerInput != null) return;
 
       playerInput = GetComponent<PlayerInput>();
+
+      if (playerInput == null) return;
+      if (playerInput.currentActionMap == null) return;
 
       ActionMove = playerInput.currentActionMap.FindAction("Move");
 

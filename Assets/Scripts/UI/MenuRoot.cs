@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Lix.Core;
 
-public class MenuRoot : DontDestroy
+public class MenuRoot : MonoBehaviour
 {
 
 }
