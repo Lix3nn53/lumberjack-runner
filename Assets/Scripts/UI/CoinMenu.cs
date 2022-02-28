@@ -2,15 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Lix.Core;
 
-public class CoinMenu : MonoBehaviour
+namespace Lix.LumberjackRunner
 {
-  private int coinsCollected = 0;
-  [SerializeField] private TMP_Text text;
-
-  public void OnCoinCollect(int amount)
+  public class CoinMenu : MonoBehaviour
   {
-    coinsCollected += amount;
-    text.text = coinsCollected.ToString();
+    [SerializeField] private TMP_Text text;
+
+    private GameManager gameManager;
+
+    private void Start()
+    {
+      gameManager = DIContainer.GetService<GameManager>();
+
+      gameManager.OnCoinValueChangeEvent += OnCoinValueChange;
+
+      text.text = gameManager.Coins.ToString();
+    }
+
+    public void OnCoinValueChange(int amount)
+    {
+      text.text = gameManager.Coins.ToString();
+    }
   }
 }

@@ -22,10 +22,6 @@ namespace Lix.LumberjackRunner
 
       playerCollider.OnStack(this.gameObject);
 
-      // The logs player is carrying affacted by gravity
-      this.gameObject.GetComponent<BoxCollider>().isTrigger = false;
-      this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-
       Destroy(this); // Removes this script instance from the game object
     }
   }

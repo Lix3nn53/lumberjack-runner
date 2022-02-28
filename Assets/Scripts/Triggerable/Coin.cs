@@ -7,11 +7,11 @@ namespace Lix.LumberjackRunner
 {
   public class Coin : Triggerable
   {
-    private CoinMenu coinMenu;
+    private GameManager gameManager;
 
     private void Start()
     {
-      coinMenu = DIContainer.GetService<CoinMenu>();
+      gameManager = DIContainer.GetService<GameManager>();
     }
 
     public override void OnTrigger(Collider other)
@@ -20,7 +20,7 @@ namespace Lix.LumberjackRunner
       if (go == null || !other.gameObject.CompareTag("Player"))
         return;
 
-      coinMenu.OnCoinCollect(1);
+      gameManager.AddCoins(1);
 
       Destroy(this.gameObject);
     }

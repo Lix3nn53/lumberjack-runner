@@ -33,9 +33,18 @@ namespace Lix.LumberjackRunner
       // trackManager = DIContainer.GetService<TrackManager>();
     }
 
+    public int GetStackCount()
+    {
+      return stackContainer.transform.childCount;
+    }
+
     public void OnStack(GameObject stack)
     {
-      int stackCount = this.stackContainer.transform.childCount;
+      // The logs player is carrying affacted by gravity
+      stack.GetComponent<BoxCollider>().isTrigger = false;
+      stack.GetComponent<Rigidbody>().isKinematic = false;
+
+      int stackCount = GetStackCount();
 
       // Add New Stack To Container
       stack.transform.SetParent(this.stackContainer.gameObject.transform);
@@ -43,49 +52,6 @@ namespace Lix.LumberjackRunner
       stack.transform.localPosition = new Vector3(0, localY, 0);
 
       // AudioManager.Instance.Play("interractEnter");
-    }
-    public void OnObstacle(ObstacleGroup.ObstacleLine[] parts)
-    {
-      List<int> toRemove = new List<int>();
-      int requiredHeight = 0;
-      foreach (ObstacleGroup.ObstacleLine part in parts)
-      {
-        int currentHeight = part.start + part.height;
-        if (currentHeight > requiredHeight)
-        {
-          requiredHeight = currentHeight;
-        }
-
-        for (int i = part.start; i < part.start + part.height; i++)
-        {
-          toRemove.Add(i);
-        }
-      }
-
-      // Remove playerCubes from player
-      if (toRemove.Count > 1)
-      {
-        toRemove = toRemove.Distinct().ToList();
-        toRemove.Sort();
-      }
-
-      // Check for gameover
-      int count = this.stackContainer.transform.childCount;
-      if (count < requiredHeight || count <= toRemove.Count)
-      { // Gameover if player is below required height or if player loses all cubes 
-        playerMovement.StopRunning();
-        Debug.Log("GAME OVER");
-
-        return;
-      }
-
-      int lastIndex = count - 1;
-      foreach (int i in toRemove)
-      {
-        GameObject cubeToRemove = this.stackContainer.transform.GetChild(lastIndex - i).gameObject;
-        cubeToRemove.transform.SetParent(trackManager.GetCurrentSegment().DroppedCubeThrash.transform); // Add dropped cube to thrash of current segment
-        cubeToRemove.transform.localPosition = new Vector3((int)(cubeToRemove.transform.localPosition.x), cubeToRemove.transform.localPosition.y, cubeToRemove.transform.localPosition.z);
-      }
     }
 
     public void OnObstacle()
