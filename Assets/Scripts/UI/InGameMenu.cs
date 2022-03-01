@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Lix.Core;
 
@@ -11,6 +12,7 @@ namespace Lix.LumberjackRunner
   {
     public GameObject Panel;
     [SerializeField] private TMP_Text coinText;
+    [SerializeField] private TMP_Text levelText;
     [SerializeField] private Slider trackProgress;
     [SerializeField] private Transform finishLocation;
     private GameManager gameManager;
@@ -27,9 +29,11 @@ namespace Lix.LumberjackRunner
       playerMovement = DIContainer.GetService<PlayerMovement>();
 
       playerMovement.OnPlayerMoveEvent += OnPlayerMove;
+
+      levelText.text = SceneManager.GetActiveScene().buildIndex.ToString();
     }
 
-    public void OnCoinValueChange(int amount)
+    private void OnCoinValueChange(int amount)
     {
       coinText.text = gameManager.CurrentCoins.ToString();
     }
@@ -43,7 +47,7 @@ namespace Lix.LumberjackRunner
     // }
 
     // NOT USING THIS because FixedUpdate is too laggy for UI
-    public void OnPlayerMove(Vector3 position)
+    private void OnPlayerMove(Vector3 position)
     {
       trackProgress.value = playerMovement.transform.position.z / finishLocation.position.z;
     }
