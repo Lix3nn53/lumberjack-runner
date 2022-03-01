@@ -30,5 +30,10 @@ namespace Lix.LumberjackRunner
         animator.SetTrigger("Lose");
       }
     }
+
+    public void SetStackAmount(int stackCount)
+    {
+      animator.SetInteger("StackAmount", stackCount);
+    }
   }
 }

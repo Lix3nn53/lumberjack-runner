@@ -25,12 +25,15 @@ namespace Lix.LumberjackRunner
     private PlayerMovement playerMovement;
     private GameManager gameManager;
     private AudioManager audioManager;
-
+    private PlayerAnimationController playerAnimationController;
     private void Start()
     {
       playerMovement = DIContainer.GetService<PlayerMovement>();
       gameManager = DIContainer.GetService<GameManager>();
       audioManager = DIContainer.GetService<AudioManager>();
+      playerAnimationController = DIContainer.GetService<PlayerAnimationController>();
+
+      playerAnimationController.SetStackAmount(GetStackCount());
     }
 
     public int GetStackCount()
@@ -53,6 +56,7 @@ namespace Lix.LumberjackRunner
 
       // Play Sound
       audioManager.Play("OnStack");
+      playerAnimationController.SetStackAmount(GetStackCount());
     }
 
     public void OnObstacle()
@@ -60,7 +64,7 @@ namespace Lix.LumberjackRunner
       int toRemove = 1;
 
       // Check for gameover
-      int count = this.stackContainer.transform.childCount;
+      int count = GetStackCount();
       if (count < toRemove)
       { // Gameover if player is below required height or if player loses all cubes 
         playerMovement.StopRunning();
@@ -72,17 +76,20 @@ namespace Lix.LumberjackRunner
       GameObject cubeToRemove = this.stackContainer.transform.GetChild(lastIndex).gameObject;
       // cubeToRemove.transform.SetParent(null); // Add dropped cube to thrash of current segment
       Destroy(cubeToRemove);
+      playerAnimationController.SetStackAmount(GetStackCount());
     }
 
     public void OnWaterObstacle(WaterObstacle waterObstacle)
     {
       waterObstacle.FormLane(this.stackContainer, this.transform.position.x);
+      playerAnimationController.SetStackAmount(GetStackCount());
     }
 
     public void OnFinish(Finish finish)
     {
       finish.OnFinishCallback(this.stackContainer, this.transform.position.x);
       Destroy(this.stackContainer);
+      playerAnimationController.SetStackAmount(0);
     }
   }
 }
