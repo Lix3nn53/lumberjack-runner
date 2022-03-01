@@ -10,6 +10,7 @@ namespace Lix.LumberjackRunner
   {
     private GameManager gameManager;
     private IInputListener inputListener;
+    private InGameMenu inGameMenu;
     public void Enter()
     {
       inputListener = DIContainer.GetService<IInputListener>();
@@ -17,6 +18,10 @@ namespace Lix.LumberjackRunner
       inputListener.GetAction(InputActionType.Pause).performed += OnPauseInputPerformed;
 
       gameManager = DIContainer.GetService<GameManager>();
+
+      inGameMenu = DIContainer.GetService<InGameMenu>();
+
+      inGameMenu.Panel.SetActive(true);
     }
 
     private void OnPauseInputPerformed(InputAction.CallbackContext context)
@@ -32,6 +37,8 @@ namespace Lix.LumberjackRunner
     public void Exit()
     {
       inputListener.GetAction(InputActionType.Pause).performed -= OnPauseInputPerformed;
+
+      inGameMenu.Panel.SetActive(false);
     }
   }
 }

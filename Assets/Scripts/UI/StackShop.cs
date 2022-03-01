@@ -29,7 +29,7 @@ namespace Lix.LumberjackRunner
 
     public void BuyStack()
     {
-      if (gameManager.Coins < price)
+      if (gameManager.TotalCoins < price)
       {
         return;
       }
@@ -42,7 +42,7 @@ namespace Lix.LumberjackRunner
         playerCollider.OnStack(stack);
         stackCountText.text = "x" + (stackCount + 1);
 
-        gameManager.AddCoins(-price);
+        gameManager.AddTotalCoins(-price);
         this.price += 5;
 
         if (stackCount == maxStackCount - 1)

@@ -16,6 +16,10 @@ namespace Lix.LumberjackRunner
     private bool isRunning = true;
     private float movementInput;
 
+    public delegate void OnPlayerMove(Vector3 position);
+
+    public event OnPlayerMove OnPlayerMoveEvent;
+
     private void Awake()
     {
       rigidbody = GetComponent<Rigidbody>();
@@ -37,8 +41,8 @@ namespace Lix.LumberjackRunner
         return;
       }
 
-      float forwardVelocity = this.speedForward * Time.deltaTime;
-      float sidewaysVelocity = this.speedSideways * Time.deltaTime * -this.movementInput;
+      float forwardVelocity = this.speedForward * Time.fixedDeltaTime;
+      float sidewaysVelocity = this.speedSideways * Time.fixedDeltaTime * -this.movementInput;
 
       if (rigidbody.position.x >= 2)
       {
@@ -60,6 +64,7 @@ namespace Lix.LumberjackRunner
       }
 
       rigidbody.velocity = new Vector3(sidewaysVelocity, rigidbody.velocity.y, forwardVelocity);
+      OnPlayerMoveEvent?.Invoke(rigidbody.position);
     }
 
     public void OnMovement(float movement)
@@ -80,6 +85,8 @@ namespace Lix.LumberjackRunner
 
     public void DisableInput()
     {
+      OnMovement(0);
+
       IInputListener inputListener = DIContainer.GetService<IInputListener>();
 
       InputAction moveAction = inputListener.GetAction(InputActionType.Move);

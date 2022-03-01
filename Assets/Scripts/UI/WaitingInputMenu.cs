@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Lix.Core;
+using TMPro;
 
 namespace Lix.LumberjackRunner
 {
   public class WaitingInputMenu : MonoBehaviour
   {
     public GameObject Panel;
+    [SerializeField] private TMP_Text coinText;
     [SerializeField] private float range = 120f;
     [SerializeField] private float endOffset = 20f;
 
@@ -23,11 +25,28 @@ namespace Lix.LumberjackRunner
 
     private bool forward = true;
 
+    private GameManager gameManager;
+
 
     private void Start()
     {
       startX = touchToStart.anchoredPosition.x - range;
       endX = touchToStart.anchoredPosition.x + range + endOffset;
+
+      gameManager = DIContainer.GetService<GameManager>();
+      gameManager.OnTotalCoinValueChangeEvent += OnTotalCoinValueChange;
+
+      coinText.text = gameManager.TotalCoins.ToString();
+    }
+
+    public void OnTotalCoinValueChange(int amount)
+    {
+      coinText.text = gameManager.TotalCoins.ToString();
+    }
+
+    private void OnDisable()
+    {
+      gameManager.OnTotalCoinValueChangeEvent -= OnTotalCoinValueChange;
     }
 
     private void Update()

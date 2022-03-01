@@ -20,7 +20,7 @@ namespace Lix.LumberjackRunner
       if (go == null || !other.gameObject.CompareTag("Player"))
         return;
 
-      gameManager.AddCoins(1);
+      gameManager.AddCurrentCoins(1);
 
       Destroy(this.gameObject);
     }

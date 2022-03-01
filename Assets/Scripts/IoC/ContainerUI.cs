@@ -8,7 +8,7 @@ public class ContainerUI : DIContainerRegisterMono
 {
   [SerializeField] private WaitingInputMenu waitingInputMenu;
   [SerializeField] private PauseMenu pauseMenu;
-  [SerializeField] private CoinMenu coinMenu;
+  [SerializeField] private InGameMenu inGameMenu;
 
   public override void RegisterDependencies()
   {
@@ -16,6 +16,6 @@ public class ContainerUI : DIContainerRegisterMono
 
     DIContainer.Register(new ServiceDescriptor(pauseMenu, ServiceLifetime.Transient));
 
-    DIContainer.Register(new ServiceDescriptor(coinMenu, ServiceLifetime.Transient));
+    DIContainer.Register(new ServiceDescriptor(inGameMenu, ServiceLifetime.Transient));
   }
 }

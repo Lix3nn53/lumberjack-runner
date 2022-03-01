@@ -8,11 +8,17 @@ namespace Lix.LumberjackRunner
 {
   public class GameManager : StateMachine
   {
-    [SerializeField] private int coins;
-    public int Coins
+    [SerializeField] private int totalCoins = 0;
+    public int TotalCoins
     {
-      get { return coins; }
-      set { coins = value; }
+      get { return totalCoins; }
+      set { totalCoins = value; }
+    }
+    [SerializeField] private int currentCoins = 0;
+    public int CurrentCoins
+    {
+      get { return currentCoins; }
+      set { currentCoins = value; }
     }
     public int FinishStackCount
     {
@@ -20,9 +26,13 @@ namespace Lix.LumberjackRunner
       private set;
     }
 
-    public delegate void OnCoinValueChange(int newValue);
+    public delegate void OnTotalCoinValueChange(int newValue);
 
-    public event OnCoinValueChange OnCoinValueChangeEvent;
+    public event OnTotalCoinValueChange OnTotalCoinValueChangeEvent;
+
+    public delegate void OnCurrentCoinValueChange(int newValue);
+
+    public event OnCurrentCoinValueChange OnCurrentCoinValueChangeEvent;
 
     public delegate void OnGameOver();
 
@@ -62,15 +72,26 @@ namespace Lix.LumberjackRunner
       OnGameOverEvent?.Invoke();
     }
 
-    public void AddCoins(int amount)
+    public void AddTotalCoins(int amount)
     {
       if (amount > 0)
       {
         audioManager.Play("OnCoin");
       }
 
-      Coins += amount;
-      OnCoinValueChangeEvent?.Invoke(Coins);
+      TotalCoins += amount;
+      OnTotalCoinValueChangeEvent?.Invoke(TotalCoins);
+    }
+
+    public void AddCurrentCoins(int amount)
+    {
+      if (amount > 0)
+      {
+        audioManager.Play("OnCoin");
+      }
+
+      CurrentCoins += amount;
+      OnCurrentCoinValueChangeEvent?.Invoke(CurrentCoins);
     }
 
   }
