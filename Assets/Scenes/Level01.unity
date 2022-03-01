@@ -835,10 +835,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrackStack1
       objectReference: {fileID: 0}
-    - target: {fileID: 8175947662366962920, guid: a4c1fc15f23f27646bf15c17a0ae9d62, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c1fc15f23f27646bf15c17a0ae9d62, type: 3}
 --- !u!4 &229516717 stripped

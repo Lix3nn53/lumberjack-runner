@@ -14,6 +14,11 @@ namespace Lix.LumberjackRunner
       get { return coins; }
       set { coins = value; }
     }
+    public int FinishStackCount
+    {
+      get;
+      private set;
+    }
 
     public delegate void OnCoinValueChange(int newValue);
 
@@ -33,6 +38,7 @@ namespace Lix.LumberjackRunner
     private void Start()
     {
       audioManager = DIContainer.GetService<AudioManager>();
+      FinishStackCount = 0;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -43,6 +49,11 @@ namespace Lix.LumberjackRunner
     private void OnDestroy()
     {
       SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void OnFinish(int stackCount)
+    {
+      FinishStackCount = stackCount;
     }
 
     public void GameOver(bool isWin)

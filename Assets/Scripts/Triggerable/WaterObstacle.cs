@@ -42,7 +42,7 @@ namespace Lix.LumberjackRunner
       triggerCollider.enabled = false;
     }
 
-    private static float[] lanes = new float[] { -1.5f, 0f, 1.5f };
+    public static float[] lanes = new float[] { -1.5f, 0f, 1.5f };
 
     [SerializeField] private GameObject[] laneColliders;
 

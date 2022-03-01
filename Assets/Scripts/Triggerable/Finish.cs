@@ -9,11 +9,22 @@ namespace Lix.LumberjackRunner
   {
     private PlayerMovement playerMovement;
     private GameManager gameManager;
+    private PlayerCollider playerCollider;
+
+    [SerializeField] private int requiredLogAmount = 8;
+
+    [SerializeField] private GameObject[] woodFinishArray;
 
     private void Start()
     {
       playerMovement = DIContainer.GetService<PlayerMovement>();
       gameManager = DIContainer.GetService<GameManager>();
+      playerCollider = DIContainer.GetService<PlayerCollider>();
+
+      foreach (GameObject woodFinish in woodFinishArray)
+      {
+        woodFinish.SetActive(false);
+      }
     }
 
     public override void OnTrigger(Collider other)
@@ -22,10 +33,33 @@ namespace Lix.LumberjackRunner
       if (go == null || !other.gameObject.CompareTag("Player"))
         return;
 
-      playerMovement.StopRunning();
-      gameManager.GameOver(true);
+      // TODO carry this over to trigger on finish lifebuoy
+      // playerMovement.StopRunning();
+      // gameManager.GameOver(true);
+      playerMovement.DisableInput();
+      playerCollider.OnFinish(this);
 
       Destroy(this);
+    }
+
+    public void OnFinishCallback(GameObject stackContainer, float playerX)
+    {
+      gameManager.OnFinish(stackContainer.transform.childCount);
+
+      int laneIndex = WaterObstacle.GetLane(playerX);
+
+      int stopIndex = stackContainer.transform.childCount;
+      if (stackContainer.transform.childCount > requiredLogAmount)
+      {
+        stopIndex = requiredLogAmount;
+      }
+
+      int lastIndex = stackContainer.transform.childCount - 1;
+
+      for (int i = 0; i < stopIndex; i++)
+      {
+        woodFinishArray[i].SetActive(true);
+      }
     }
   }
 }

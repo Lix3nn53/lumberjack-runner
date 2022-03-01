@@ -78,5 +78,11 @@ namespace Lix.LumberjackRunner
     {
       waterObstacle.FormLane(this.stackContainer, this.transform.position.x);
     }
+
+    public void OnFinish(Finish finish)
+    {
+      finish.OnFinishCallback(this.stackContainer, this.transform.position.x);
+      Destroy(this.stackContainer);
+    }
   }
 }

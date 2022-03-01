@@ -78,6 +78,15 @@ namespace Lix.LumberjackRunner
       this.isRunning = true;
     }
 
+    public void DisableInput()
+    {
+      IInputListener inputListener = DIContainer.GetService<IInputListener>();
+
+      InputAction moveAction = inputListener.GetAction(InputActionType.Move);
+      moveAction.performed -= OnMovementInputPerformed;
+      moveAction.canceled -= OnMovementInputCanceled;
+    }
+
     private void OnMovementInputPerformed(InputAction.CallbackContext context)
     {
       InputDevice device = context.control.device;
