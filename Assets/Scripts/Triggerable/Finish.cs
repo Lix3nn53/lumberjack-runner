@@ -15,6 +15,8 @@ namespace Lix.LumberjackRunner
 
     [SerializeField] private GameObject[] woodFinishArray;
 
+    [SerializeField] private float woodShiftPerLane = 0.3f;
+
     private void Start()
     {
       playerMovement = DIContainer.GetService<PlayerMovement>();
@@ -59,6 +61,11 @@ namespace Lix.LumberjackRunner
       for (int i = 0; i < stopIndex; i++)
       {
         woodFinishArray[i].SetActive(true);
+        woodFinishArray[i].transform.localPosition = new Vector3(
+          woodFinishArray[i].transform.localPosition.x + ((laneIndex - 1) * woodShiftPerLane),
+          woodFinishArray[i].transform.localPosition.y,
+          woodFinishArray[i].transform.localPosition.z);
+
       }
     }
   }

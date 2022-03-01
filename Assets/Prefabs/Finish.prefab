@@ -107,6 +107,7 @@ MonoBehaviour:
   - {fileID: 5678045263640961605}
   - {fileID: 5449987753866742989}
   - {fileID: 5678045263656534382}
+  woodShiftPerLane: 0.3
 --- !u!1 &5015079287371085842
 GameObject:
   m_ObjectHideFlags: 0
