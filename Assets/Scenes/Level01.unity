@@ -408,6 +408,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 85765984, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
   m_PrefabInstance: {fileID: 1826720486487432945}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &85765986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 85765986, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
+  m_PrefabInstance: {fileID: 1826720486487432945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85765984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &85765987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4036,9 +4047,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 146221602, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
+      propertyPath: m_ParentHash.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 146221602, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
       propertyPath: m_ChildCameras.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 146221602, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
+      propertyPath: m_Instructions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 146221602, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
+      propertyPath: m_ParentHash.Array.data[6].m_Hash
+      value: 1597964411
+      objectReference: {fileID: 0}
+    - target: {fileID: 146221602, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
+      propertyPath: m_Instructions.Array.data[2].m_FullHash
+      value: 1597964411
+      objectReference: {fileID: 0}
+    - target: {fileID: 146221602, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
+      propertyPath: m_ParentHash.Array.data[6].m_ParentHash
+      value: 756556552
+      objectReference: {fileID: 0}
+    - target: {fileID: 146221602, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
+      propertyPath: m_Instructions.Array.data[2].m_VirtualCamera
+      value: 
+      objectReference: {fileID: 85765986}
     - target: {fileID: 1826720487100014960, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
       propertyPath: m_RootOrder
       value: 8
