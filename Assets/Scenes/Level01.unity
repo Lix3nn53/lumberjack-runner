@@ -3259,7 +3259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79abc34c8e895946a4b2860964b2ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enable: 0
+  enable: 1
 --- !u!1 &1808249321
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,6 +4344,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1944783523}
     m_Modifications:
+    - target: {fileID: 1242439183, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242439183, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299947933, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
+      propertyPath: currentLevelColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026451847, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5735988642176186536, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
       propertyPath: finishLocation
       value: 
