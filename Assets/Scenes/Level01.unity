@@ -4345,20 +4345,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 1944783523}
     m_Modifications:
     - target: {fileID: 1242439183, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242439183, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299947933, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
-      propertyPath: currentLevelColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026451847, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5735988642176186536, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
       propertyPath: finishLocation

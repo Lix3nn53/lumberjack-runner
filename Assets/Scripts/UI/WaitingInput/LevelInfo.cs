@@ -17,6 +17,6 @@ public class LevelInfo : MonoBehaviour
 
         levelImages[currentLevelIndex].color = currentLevelColor;
 
-        slider.value = 0.25f * currentLevelIndex;
+        slider.value = 0.33f * currentLevelIndex;
     }
 }

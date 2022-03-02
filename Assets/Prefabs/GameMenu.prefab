@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294d297b1de789b4ba24d332fbfedd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevelColor: {r: 0.9411765, g: 1, b: 0, a: 0}
+  currentLevelColor: {r: 0.9411765, g: 1, b: 0, a: 1}
   slider: {fileID: 2026451847}
   levelImages:
   - {fileID: 1012061200}
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
