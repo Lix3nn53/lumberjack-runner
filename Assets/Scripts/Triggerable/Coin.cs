@@ -7,11 +7,18 @@ namespace Lix.LumberjackRunner
 {
   public class Coin : Triggerable
   {
+    [SerializeField] private int coin = 1;
+    [SerializeField] private float rotationSpeed = 1;
     private GameManager gameManager;
 
     private void Start()
     {
       gameManager = DIContainer.GetService<GameManager>();
+    }
+
+    private void Update()
+    {
+           transform.Rotate ( Vector3.up * ( rotationSpeed * Time.deltaTime ) );
     }
 
     public override void OnTrigger(Collider other)
@@ -20,7 +27,7 @@ namespace Lix.LumberjackRunner
       if (go == null || !other.gameObject.CompareTag("Player"))
         return;
 
-      gameManager.AddCurrentCoins(1);
+      gameManager.AddCurrentCoins(coin);
 
       Destroy(this.gameObject);
     }

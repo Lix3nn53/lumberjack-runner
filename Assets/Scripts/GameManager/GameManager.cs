@@ -61,11 +61,13 @@ namespace Lix.LumberjackRunner
       SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    // Called when player reaches finish line
     public void OnFinish(int stackCount)
     {
       FinishStackCount = stackCount;
     }
 
+    // Called when player dies or reaches final Lifebuoy after finish
     public void GameOver(bool isWin)
     {
       ChangeState(new GameStateEnd(isWin));
