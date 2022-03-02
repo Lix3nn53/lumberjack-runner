@@ -34,7 +34,7 @@ namespace Lix.LumberjackRunner
 
     public event OnCurrentCoinValueChange OnCurrentCoinValueChangeEvent;
 
-    public delegate void OnGameOver(bool isWin);
+    public delegate void OnGameOver(bool isWin, int coinsCollected);
 
     public event OnGameOver OnGameOverEvent;
 
@@ -70,8 +70,12 @@ namespace Lix.LumberjackRunner
     // Called when player dies or reaches final Lifebuoy after finish
     public void GameOver(bool isWin)
     {
+      if (isWin)
+      {
+        TotalCoins += CurrentCoins;
+      }
       ChangeState(new GameStateEnd(isWin));
-      OnGameOverEvent?.Invoke(isWin);
+      OnGameOverEvent?.Invoke(isWin, CurrentCoins);
     }
 
     public void AddTotalCoins(int amount)

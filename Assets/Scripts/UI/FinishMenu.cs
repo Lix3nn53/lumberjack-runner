@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Lix.Core;
+using TMPro;
 
 
 namespace Lix.LumberjackRunner
@@ -15,6 +16,7 @@ namespace Lix.LumberjackRunner
     [SerializeField] private GameObject container;
     [SerializeField] private Button winButton;
     [SerializeField] private Button loseButton;
+    [SerializeField] private TMP_Text coinText;
 
     private GameManager gameManager;
 
@@ -28,9 +30,10 @@ namespace Lix.LumberjackRunner
       gameManager.OnGameOverEvent += OnGameOver;
     }
 
-    public void OnGameOver(bool isWin)
+    public void OnGameOver(bool isWin, int coinsCollected)
     {
       container.SetActive(true);
+      coinText.text = coinsCollected.ToString();
       if (isWin)
       {
         winButton.gameObject.SetActive(true);

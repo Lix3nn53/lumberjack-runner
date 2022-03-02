@@ -18,7 +18,7 @@ namespace Lix.LumberjackRunner
 
     private void Update()
     {
-           transform.Rotate ( Vector3.up * ( rotationSpeed * Time.deltaTime ) );
+      transform.Rotate ( Vector3.up * ( rotationSpeed * Time.deltaTime ) );
     }
 
     public override void OnTrigger(Collider other)

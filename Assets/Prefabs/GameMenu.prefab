@@ -324,6 +324,7 @@ MonoBehaviour:
   container: {fileID: 5735988643249241711}
   winButton: {fileID: 5735988642228212108}
   loseButton: {fileID: 382813819}
+  coinText: {fileID: 5735988642676599311}
 --- !u!1 &5735988642104546103
 GameObject:
   m_ObjectHideFlags: 0
