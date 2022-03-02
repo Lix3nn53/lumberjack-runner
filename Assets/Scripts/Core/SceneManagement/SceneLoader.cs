@@ -13,10 +13,13 @@ namespace Lix.Core
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider slider;
     [SerializeField] private TMP_Text percentText;
+    [SerializeField] private float extraWaitTime = 0.5f;
+
+    private float extraWaitedFor = 0f;
 
     public void Load(int sceneIndex)
     {
-      slider.enabled = true;
+      slider.gameObject.SetActive(true);
 
       StartCoroutine(LoadAsynchronously(sceneIndex));
     }
@@ -57,7 +60,14 @@ namespace Lix.Core
           // Wait to you press the space key to activate the Scene
           // if (buttonPressed)
           // Activate the Scene
-          operation.allowSceneActivation = true; // operation is not done until this line is executed
+          if (extraWaitedFor >= extraWaitTime)
+          {
+            operation.allowSceneActivation = true; // operation is not done until this line is executed
+          }
+          else
+          {
+            extraWaitedFor += Time.deltaTime;
+          }
         }
 
         Debug.Log(progress);

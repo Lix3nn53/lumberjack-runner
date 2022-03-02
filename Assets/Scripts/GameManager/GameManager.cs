@@ -34,7 +34,7 @@ namespace Lix.LumberjackRunner
 
     public event OnCurrentCoinValueChange OnCurrentCoinValueChangeEvent;
 
-    public delegate void OnGameOver();
+    public delegate void OnGameOver(bool isWin);
 
     public event OnGameOver OnGameOverEvent;
 
@@ -69,7 +69,7 @@ namespace Lix.LumberjackRunner
     public void GameOver(bool isWin)
     {
       ChangeState(new GameStateEnd(isWin));
-      OnGameOverEvent?.Invoke();
+      OnGameOverEvent?.Invoke(isWin);
     }
 
     public void AddTotalCoins(int amount)
