@@ -10,11 +10,13 @@ namespace Lix.LumberjackRunner
     private bool IsWin { get; set; }
 
     private PlayerAnimationController playerAnimationController;
+    private CameraRotator cameraRotator;
     public GameStateEnd(bool isWin)
     {
       IsWin = isWin;
 
       playerAnimationController = DIContainer.GetService<PlayerAnimationController>();
+      cameraRotator = DIContainer.GetService<CameraRotator>();
     }
 
     public void Enter()
@@ -29,6 +31,7 @@ namespace Lix.LumberjackRunner
       }
 
       playerAnimationController.OnGameOver(IsWin);
+      cameraRotator.enabled = true;
     }
 
     public void Execute()

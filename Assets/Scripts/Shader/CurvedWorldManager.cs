@@ -6,7 +6,7 @@ using UnityEngine;
 public class CurvedWorldManager : MonoBehaviour
 {
   private const string ENABLED = "_ENABLE";
-  [SerializeField] private bool enable = false;
+  [SerializeField] private bool enable = true;
 
   private void Update()
   {
@@ -22,5 +22,13 @@ public class CurvedWorldManager : MonoBehaviour
     {
       Shader.DisableKeyword(ENABLED);
     }
+
+    this.enabled = false;
+  }
+
+  public void SetEnable(bool enable)
+  {
+    this.enabled = true;
+    this.enable = enable;
   }
 }

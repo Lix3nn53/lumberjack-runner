@@ -24,6 +24,7 @@ namespace Lix.LumberjackRunner
 
       playerMovement = DIContainer.GetService<PlayerMovement>();
 
+      DIContainer.GetService<CurvedWorldManager>().SetEnable(true);
       Pause();
     }
 
