@@ -114,6 +114,16 @@ namespace Lix.LumberjackRunner
       //   movement = temp * Mathf.Sign(movement);
       // }
       // inputDebugText.text = debug;
+      // TODO: find a better solution to detect different devices
+      if (device.name == "Touchscreen") // if (device.noisy) is false for touchscreen
+      {
+        float TouchInputSensitivity = 8f;
+
+        float temp = Mathf.Clamp(movement, -TouchInputSensitivity, TouchInputSensitivity);
+        temp = Mathf.Abs(temp);
+        temp = Mathf.Lerp(0f, 1f, temp / TouchInputSensitivity);
+        movement = -1 * temp * Mathf.Sign(movement);
+      }
 
       this.OnMovement(movement);
     }

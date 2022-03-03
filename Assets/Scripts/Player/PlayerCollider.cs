@@ -51,8 +51,16 @@ namespace Lix.LumberjackRunner
 
       // Add New Stack To Container
       stack.transform.SetParent(this.stackContainer.gameObject.transform);
-      float localY = stackContainer.transform.GetChild(stackCount - 1).transform.localPosition.y + this.heightPerStack + this.offsetYOnCollect;
-      stack.transform.localPosition = new Vector3(0, localY, 0);
+      if (stackCount > 0)
+      {
+        float localY = stackContainer.transform.GetChild(stackCount - 1).transform.localPosition.y + this.heightPerStack + this.offsetYOnCollect;
+        stack.transform.localPosition = new Vector3(0, localY, 0);
+      }
+      else
+      {
+        float localY = this.heightPerStack + this.offsetYOnCollect;
+        stack.transform.localPosition = new Vector3(0, localY, 0);
+      }
 
       // Play Sound
       audioManager.Play("OnStack");
@@ -90,6 +98,11 @@ namespace Lix.LumberjackRunner
       finish.OnFinishCallback(this.stackContainer, this.transform.position.x);
       Destroy(this.stackContainer);
       playerAnimationController.SetStackAmount(0);
+    }
+
+    public void OnDrown()
+    {
+      Destroy(this.stackContainer);
     }
   }
 }

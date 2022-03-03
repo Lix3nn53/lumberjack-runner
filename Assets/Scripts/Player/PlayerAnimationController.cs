@@ -19,16 +19,19 @@ namespace Lix.LumberjackRunner
       animator.SetFloat("SpeedForward", Mathf.Abs(playerRb.velocity.z));
     }
 
-    public void OnGameOver(bool isWin)
+    public void OnWin()
     {
-      if (isWin)
-      {
-        animator.SetTrigger("Win");
-      }
-      else
-      {
-        animator.SetTrigger("Lose");
-      }
+      animator.SetTrigger("Win");
+    }
+
+    public void OnGameOverObstacle()
+    {
+      animator.SetTrigger("Lose");
+    }
+
+    public void OnGameOverDrown()
+    {
+      animator.SetTrigger("Drown");
     }
 
     public void SetStackAmount(int stackCount)

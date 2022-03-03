@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Lix.Core;
@@ -18,14 +19,21 @@ namespace Lix.LumberjackRunner
 
       inputListener = DIContainer.GetService<IInputListener>();
 
-      inputListener.GetAction(InputActionType.Move).performed += OnMoveInputPerformed;
-
       gameManager = DIContainer.GetService<GameManager>();
 
       playerMovement = DIContainer.GetService<PlayerMovement>();
 
       DIContainer.GetService<CurvedWorldManager>().SetEnable(true);
       Pause();
+
+      delayedInputRegister();
+    }
+
+    private async Task delayedInputRegister()
+    {
+      await Task.Delay(1000);
+
+      inputListener.GetAction(InputActionType.Move).performed += OnMoveInputPerformed;
     }
 
     private void OnMoveInputPerformed(InputAction.CallbackContext context)

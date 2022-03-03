@@ -17,8 +17,17 @@ namespace Lix.Core
 
     private float extraWaitedFor = 0f;
 
+    private bool isLoading = false;
+
     public void Load(int sceneIndex)
     {
+      if (isLoading)
+      {
+        return;
+      }
+      isLoading = true;
+
+      Debug.Log("Loading scene: " + sceneIndex);
       slider.gameObject.SetActive(true);
 
       StartCoroutine(LoadAsynchronously(sceneIndex));
@@ -62,6 +71,7 @@ namespace Lix.Core
           // Activate the Scene
           if (extraWaitedFor >= extraWaitTime)
           {
+            isLoading = false;
             operation.allowSceneActivation = true; // operation is not done until this line is executed
           }
           else

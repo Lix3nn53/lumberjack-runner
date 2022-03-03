@@ -12,6 +12,10 @@ public class CoinAnimation : MonoBehaviour
   private void Start()
   {
     targetPosition = DIContainer.GetService<CoinAnimator>().TargetTransform.position;
+
+    // TODO better way to make responsible coin size?
+    float length = Screen.width / 10;
+    GetComponent<RectTransform>().sizeDelta = new Vector2(length, length);
   }
 
   private void Update()

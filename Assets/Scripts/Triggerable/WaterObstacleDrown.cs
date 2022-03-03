@@ -8,12 +8,16 @@ namespace Lix.LumberjackRunner
   public class WaterObstacleDrown : Triggerable
   {
     private PlayerMovement playerMovement;
+    private PlayerCollider playerCollider;
     private GameManager gameManager;
+    private PlayerAnimationController playerAnimationController;
 
     private void Start()
     {
       playerMovement = DIContainer.GetService<PlayerMovement>();
+      playerCollider = DIContainer.GetService<PlayerCollider>();
       gameManager = DIContainer.GetService<GameManager>();
+      playerAnimationController = DIContainer.GetService<PlayerAnimationController>();
     }
 
     public override void OnTrigger(Collider other)
@@ -26,6 +30,8 @@ namespace Lix.LumberjackRunner
 
       playerMovement.StopRunning();
       gameManager.GameOver(false);
+      playerCollider.OnDrown();
+      playerAnimationController.OnGameOverDrown();
     }
   }
 }

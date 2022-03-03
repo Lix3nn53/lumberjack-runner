@@ -30,7 +30,14 @@ namespace Lix.LumberjackRunner
         Debug.Log("You lose!");
       }
 
-      playerAnimationController.OnGameOver(IsWin);
+      if (IsWin)
+      {
+        playerAnimationController.OnWin();
+      }
+      else
+      {
+        playerAnimationController.OnGameOverObstacle();
+      }
       cameraRotator.enabled = true;
     }
 
