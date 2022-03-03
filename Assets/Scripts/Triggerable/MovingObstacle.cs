@@ -13,13 +13,11 @@ namespace Lix.LumberjackRunner
 
     [SerializeField] private bool isMovingRight;
 
-    protected override void Update()
+    private void FixedUpdate()
     {
-      base.Update();
-
       if (isMovingRight)
       {
-        transform.position += Vector3.right * speed * Time.deltaTime;
+        transform.position += Vector3.right * speed * Time.fixedDeltaTime;
         if (transform.position.x > maxX)
         {
           isMovingRight = false;
@@ -27,7 +25,7 @@ namespace Lix.LumberjackRunner
       }
       else
       {
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        transform.position += Vector3.left * speed * Time.fixedDeltaTime;
         if (transform.position.x < minX)
         {
           isMovingRight = true;

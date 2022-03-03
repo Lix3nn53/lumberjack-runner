@@ -30,7 +30,7 @@ namespace Lix.LumberjackRunner
       playerCollider.OnObstacle();
     }
 
-    protected virtual void Update()
+    private void Update()
     {
       graphics.transform.Rotate(Vector3.forward, Time.deltaTime * 100);
     }
