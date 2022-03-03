@@ -48,11 +48,11 @@ namespace Lix.LumberjackRunner
     private void Start()
     {
       audioManager = DIContainer.GetService<AudioManager>();
-      FinishStackCount = 0;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+      FinishStackCount = 0;
       ChangeState(new GameStateWaitingInput());
     }
 

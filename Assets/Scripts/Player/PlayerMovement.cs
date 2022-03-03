@@ -12,6 +12,7 @@ namespace Lix.LumberjackRunner
     [SerializeField] private TMP_Text inputDebugText;
     [SerializeField] private float speedForward = 200;
     [SerializeField] private float speedSideways = 300;
+    [SerializeField] private float TouchInputSensitivity = 6f;
     private new Rigidbody rigidbody;
     private bool isRunning = true;
     private float movementInput;
@@ -117,8 +118,6 @@ namespace Lix.LumberjackRunner
       // TODO: find a better solution to detect different devices
       if (device.name == "Touchscreen") // if (device.noisy) is false for touchscreen
       {
-        float TouchInputSensitivity = 8f;
-
         float temp = Mathf.Clamp(movement, -TouchInputSensitivity, TouchInputSensitivity);
         temp = Mathf.Abs(temp);
         temp = Mathf.Lerp(0f, 1f, temp / TouchInputSensitivity);

@@ -31,7 +31,7 @@ namespace Lix.LumberjackRunner
 
     private async Task delayedInputRegister()
     {
-      await Task.Delay(1000);
+      await Task.Delay(2000);
 
       inputListener.GetAction(InputActionType.Move).performed += OnMoveInputPerformed;
     }
