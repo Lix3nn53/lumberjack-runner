@@ -121,7 +121,7 @@ namespace Lix.LumberjackRunner
         float temp = Mathf.Clamp(movement, -TouchInputSensitivity, TouchInputSensitivity);
         temp = Mathf.Abs(temp);
         temp = Mathf.Lerp(0f, 1f, temp / TouchInputSensitivity);
-        movement = -1 * temp * Mathf.Sign(movement);
+        movement = -1 * Mathf.Pow(temp, 3) * Mathf.Sign(movement);
       }
 
       this.OnMovement(movement);
