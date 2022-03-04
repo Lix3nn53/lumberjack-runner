@@ -50,7 +50,10 @@ namespace Lix.LumberjackRunner
     private void Resume()
     {
       Time.timeScale = 1f;
-      pauseMenu.Panel.SetActive(false);
+      if (pauseMenu != null)
+      {
+        pauseMenu.Panel.SetActive(false);
+      }
     }
   }
 }

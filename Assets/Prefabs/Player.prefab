@@ -548,8 +548,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputDebugText: {fileID: 0}
-  speedForward: 300
+  speedForward: 340
   speedSideways: 300
+  TouchInputSensitivity: 1
 --- !u!1 &1826720487178556899
 GameObject:
   m_ObjectHideFlags: 0

@@ -221,7 +221,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7702246025295483018}
   - component: {fileID: 7702246025295483021}
-  - component: {fileID: 7702246026326090684}
   m_Layer: 5
   m_Name: SceneLoader
   m_TagString: Untagged
@@ -266,20 +265,6 @@ MonoBehaviour:
   slider: {fileID: 7702246025941289673}
   percentText: {fileID: 7702246024916083216}
   extraWaitTime: 0.5
---- !u!114 &7702246026326090684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7702246025295483019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f10a9a21ed5534084fc520f0937cf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  splashScreen: {fileID: 7702246025580481495}
-  sceneIndex: 1
 --- !u!1 &7702246025298330140
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +663,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7702246026791757201}
   m_FillRect: {fileID: 7702246025073268052}
   m_HandleRect: {fileID: 7702246026791757214}

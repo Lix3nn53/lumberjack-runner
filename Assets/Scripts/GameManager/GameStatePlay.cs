@@ -38,7 +38,10 @@ namespace Lix.LumberjackRunner
     {
       inputListener.GetAction(InputActionType.Pause).performed -= OnPauseInputPerformed;
 
-      inGameMenu.Panel.SetActive(false);
+      if (inGameMenu != null)
+      {
+        inGameMenu.Panel.SetActive(false);
+      }
     }
   }
 }

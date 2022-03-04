@@ -3300,17 +3300,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1826720487100014963, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
-      propertyPath: speedForward
-      value: 340
-      objectReference: {fileID: 0}
-    - target: {fileID: 1826720487100014963, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
       propertyPath: inputDebugText
       value: 
       objectReference: {fileID: 636893211}
-    - target: {fileID: 1826720487100014963, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
-      propertyPath: TouchInputSensitivity
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
 --- !u!1001 &1887665535894823168
@@ -3918,7 +3910,8 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2700344158434032330, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
 --- !u!1001 &6324341981806669430
 PrefabInstance:

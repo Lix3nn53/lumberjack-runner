@@ -28,8 +28,12 @@ namespace Lix.Core
           return;
         }
       }
+      Debug.LogWarning(string.Format("New service {0} is registered!", serviceDescriptor.ServiceType), (MonoBehaviour)serviceDescriptor.Implementation);
 
-      serviceDescriptors[serviceDescriptor.ServiceType] = serviceDescriptor;
+      serviceDescriptors.Remove(serviceDescriptor.ServiceType);
+      serviceDescriptors.Add(serviceDescriptor.ServiceType, serviceDescriptor);
+      // serviceDescriptors[serviceDescriptor.ServiceType] = serviceDescriptor;
+
       if (serviceDescriptor.ServiceLifetime == ServiceLifetime.Singleton)
       {
         DontDestroyOnLoad(((MonoBehaviour)serviceDescriptor.Implementation).gameObject);

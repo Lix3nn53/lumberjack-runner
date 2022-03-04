@@ -18,22 +18,15 @@ namespace Lix.LumberjackRunner
       waitingInputMenu = DIContainer.GetService<WaitingInputMenu>();
 
       inputListener = DIContainer.GetService<IInputListener>();
+      inputListener.GetAction(InputActionType.Move).performed += OnMoveInputPerformed;
 
       gameManager = DIContainer.GetService<GameManager>();
 
       playerMovement = DIContainer.GetService<PlayerMovement>();
 
       DIContainer.GetService<CurvedWorldManager>().SetEnable(true);
+
       Pause();
-
-      delayedInputRegister();
-    }
-
-    private async Task delayedInputRegister()
-    {
-      await Task.Delay(2000);
-
-      inputListener.GetAction(InputActionType.Move).performed += OnMoveInputPerformed;
     }
 
     private void OnMoveInputPerformed(InputAction.CallbackContext context)
@@ -60,8 +53,14 @@ namespace Lix.LumberjackRunner
 
     private void Resume()
     {
-      playerMovement.StartRunning();
-      waitingInputMenu.Panel.SetActive(false);
+      if (waitingInputMenu != null)
+      {
+        waitingInputMenu.Panel.SetActive(false);
+      }
+      if (playerMovement != null)
+      {
+        playerMovement.StartRunning();
+      }
     }
   }
 }

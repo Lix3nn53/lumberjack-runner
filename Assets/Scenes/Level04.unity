@@ -1021,17 +1021,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3319467331475529455, guid: 0bb101935d1babd4d9c7bcdd57e69469, type: 3}
   m_PrefabInstance: {fileID: 589581371}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &636893211 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5735988643648392436, guid: 4c7e57e2679c2574d8a5c9554d37bdb6, type: 3}
-  m_PrefabInstance: {fileID: 5735988643066049775}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &670824577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3662,18 +3651,6 @@ PrefabInstance:
     - target: {fileID: 1826720487100014961, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1826720487100014963, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
-      propertyPath: speedForward
-      value: 340
-      objectReference: {fileID: 0}
-    - target: {fileID: 1826720487100014963, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
-      propertyPath: inputDebugText
-      value: 
-      objectReference: {fileID: 636893211}
-    - target: {fileID: 1826720487100014963, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
-      propertyPath: TouchInputSensitivity
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb528f3bf6d17cf4a9d934c4649e9f2e, type: 3}
