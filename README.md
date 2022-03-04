@@ -2,6 +2,10 @@
 
 Stack runner game where you collect wooden logs as stacks to overcome obstacles.
 
+## Gameplay video
+
+https://youtu.be/7QJ8-xjzS70
+
 ## Assets
 
 CurvedWorldShader Tutorial: https://www.youtube.com/watch?v=qY85Hf90K68
